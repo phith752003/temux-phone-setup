@@ -123,3 +123,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `homelab`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-08-06 15:44:00 +0700] feat(dashboard): align dashboard implementation parameters
+- Type: `feat`
+- Scope: `dashboard`
+- Cycle: 2025 Telemetry Integration
+
