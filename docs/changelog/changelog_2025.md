@@ -398,3 +398,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `cron`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-08-19 22:53:47 +0700] fix(network): resolve permission issues when accessing shared internal storage
+- Type: `fix`
+- Scope: `network`
+- Cycle: 2025 Telemetry Integration
+
