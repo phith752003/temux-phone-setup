@@ -468,3 +468,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `scripts`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-08-24 11:01:41 +0700] refactor(homelab): refine homelab implementation parameters
+- Type: `refactor`
+- Scope: `homelab`
+- Cycle: 2025 Telemetry Integration
+
