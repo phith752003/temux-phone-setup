@@ -583,3 +583,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `services`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-08-30 13:21:52 +0700] chore(security): update base alpine rootfs image and core utility packages
+- Type: `chore`
+- Scope: `security`
+- Cycle: 2025 Telemetry Integration
+
