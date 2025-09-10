@@ -172,3 +172,4 @@
 [2025-09-09 11:47:33 +0700] [COMMIT #168] fix(backup): handle broken pkg repository mirrors during setup script run [status: ok]
 [2025-09-09 14:35:09 +0700] [COMMIT #169] fix(cron): optimize cron implementation parameters [status: ok]
 [2025-09-09 20:00:19 +0700] [COMMIT #170] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
+[2025-09-10 10:13:26 +0700] [COMMIT #171] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
