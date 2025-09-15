@@ -963,3 +963,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `tunnel`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-09-15 09:51:05 +0700] refactor(scripts): update scripts implementation parameters
+- Type: `refactor`
+- Scope: `scripts`
+- Cycle: 2025 Telemetry Integration
+
