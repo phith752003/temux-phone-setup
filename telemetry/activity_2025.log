@@ -252,3 +252,4 @@
 [2025-09-29 10:27:56 +0700] [COMMIT #248] fix(backup): handle broken pkg repository mirrors during setup script run [status: ok]
 [2025-09-29 15:29:45 +0700] [COMMIT #249] fix(cron): prevent Android background aggressive process kill with wake-lock [status: ok]
 [2025-09-29 21:12:35 +0700] [COMMIT #250] fix(network): streamline network implementation parameters [status: ok]
+[2025-09-29 22:43:13 +0700] [COMMIT #251] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
