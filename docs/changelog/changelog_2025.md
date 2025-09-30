@@ -1258,3 +1258,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `termux`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-09-30 11:34:46 +0700] perf(tunnel): reduce cron polling frequency to conserve battery consumption
+- Type: `perf`
+- Scope: `tunnel`
+- Cycle: 2025 Telemetry Integration
+
