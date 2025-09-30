@@ -1278,3 +1278,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `dashboard`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-09-30 23:35:20 +0700] docs(services): audit services implementation parameters
+- Type: `docs`
+- Scope: `services`
+- Cycle: 2025 Telemetry Integration
+
