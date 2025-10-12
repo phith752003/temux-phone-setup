@@ -297,3 +297,4 @@
 [2025-10-11 18:55:32 +0700] [COMMIT #293] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
 [2025-10-11 22:56:39 +0700] [COMMIT #294] refactor(homelab): separate homelab dashboard frontend from monitoring API [status: ok]
 [2025-10-12 12:01:32 +0700] [COMMIT #295] docs(dashboard): align dashboard implementation parameters [status: ok]
+[2025-10-12 20:25:51 +0700] [COMMIT #296] docs(services): document environment variables and Cloudflare token management [status: ok]
