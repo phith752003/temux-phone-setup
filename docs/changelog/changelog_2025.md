@@ -1603,3 +1603,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `network`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-10-17 21:49:51 +0700] feat(termux): configure zero-trust Cloudflare Tunnel ingress routing rules
+- Type: `feat`
+- Scope: `termux`
+- Cycle: 2025 Telemetry Integration
+
