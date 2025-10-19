@@ -1643,3 +1643,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `backup`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-10-19 19:31:07 +0700] fix(cron): prevent Android background aggressive process kill with wake-lock
+- Type: `fix`
+- Scope: `cron`
+- Cycle: 2025 Telemetry Integration
+
