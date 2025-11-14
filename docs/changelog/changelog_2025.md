@@ -2168,3 +2168,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `scripts`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-11-14 23:29:38 +0700] refactor(homelab): separate homelab dashboard frontend from monitoring API
+- Type: `refactor`
+- Scope: `homelab`
+- Cycle: 2025 Telemetry Integration
+
