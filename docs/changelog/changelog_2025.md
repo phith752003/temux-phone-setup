@@ -2318,3 +2318,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `scripts`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-11-22 12:08:05 +0700] feat(homelab): add reverse proxy routing for lightweight local microservices
+- Type: `feat`
+- Scope: `homelab`
+- Cycle: 2025 Telemetry Integration
+
