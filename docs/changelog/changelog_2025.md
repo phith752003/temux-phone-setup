@@ -2588,3 +2588,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `security`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-12-04 21:57:26 +0700] test(backup): add validation script to test tunnel health before deployment
+- Type: `test`
+- Scope: `backup`
+- Cycle: 2025 Telemetry Integration
+
