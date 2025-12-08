@@ -2633,3 +2633,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `services`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-12-08 15:48:07 +0700] feat(security): implement nightly encrypted backup script to remote storage
+- Type: `feat`
+- Scope: `security`
+- Cycle: 2025 Telemetry Integration
+
