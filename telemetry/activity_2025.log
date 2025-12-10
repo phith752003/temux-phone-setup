@@ -534,3 +534,4 @@
 [2025-12-08 21:19:51 +0700] [COMMIT #530] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
 [2025-12-09 08:46:43 +0700] [COMMIT #531] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
 [2025-12-09 16:15:23 +0700] [COMMIT #532] perf(tunnel): harden tunnel implementation parameters [status: ok]
+[2025-12-10 09:53:27 +0700] [COMMIT #533] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
