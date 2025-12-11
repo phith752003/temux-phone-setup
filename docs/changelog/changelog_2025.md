@@ -2708,3 +2708,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `termux`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-12-11 23:38:10 +0700] feat(tunnel): add thermal throttling and battery health telemetry dashboard
+- Type: `feat`
+- Scope: `tunnel`
+- Cycle: 2025 Telemetry Integration
+
