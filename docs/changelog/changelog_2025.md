@@ -2808,3 +2808,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `termux`
 - Cycle: 2025 Telemetry Integration
 
+### [2025-12-16 20:33:30 +0700] feat(tunnel): harden tunnel implementation parameters
+- Type: `feat`
+- Scope: `tunnel`
+- Cycle: 2025 Telemetry Integration
+
