@@ -565,3 +565,4 @@
 [2025-12-16 19:12:53 +0700] [COMMIT #561] feat(termux): configure zero-trust Cloudflare Tunnel ingress routing rules [status: ok]
 [2025-12-16 20:33:30 +0700] [COMMIT #562] feat(tunnel): harden tunnel implementation parameters [status: ok]
 [2025-12-16 22:59:19 +0700] [COMMIT #563] feat(scripts): implement automated proot container startup on boot [status: ok]
+[2025-12-17 09:22:15 +0700] [COMMIT #564] feat(homelab): add reverse proxy routing for lightweight local microservices [status: ok]
