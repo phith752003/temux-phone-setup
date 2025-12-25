@@ -596,3 +596,4 @@
 [2025-12-24 12:56:19 +0700] [COMMIT #592] perf(tunnel): harden tunnel implementation parameters [status: ok]
 [2025-12-24 12:57:54 +0700] [COMMIT #593] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
 [2025-12-24 13:59:09 +0700] [COMMIT #594] refactor(homelab): separate homelab dashboard frontend from monitoring API [status: ok]
+[2025-12-25 09:40:59 +0700] [COMMIT #595] docs(dashboard): align dashboard implementation parameters [status: ok]
