@@ -198,3 +198,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `cron`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-01-11 20:21:47 +0700] fix(network): streamline network implementation parameters
+- Type: `fix`
+- Scope: `network`
+- Cycle: 2026 Telemetry Integration
+
