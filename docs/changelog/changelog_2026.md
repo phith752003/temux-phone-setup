@@ -223,3 +223,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `homelab`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-01-13 21:27:13 +0700] feat(dashboard): integrate Telegram bot notifications for server uptime alerts
+- Type: `feat`
+- Scope: `dashboard`
+- Cycle: 2026 Telemetry Integration
+
