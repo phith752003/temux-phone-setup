@@ -253,3 +253,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `network`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-01-15 21:59:00 +0700] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels
+- Type: `perf`
+- Scope: `termux`
+- Cycle: 2026 Telemetry Integration
+
