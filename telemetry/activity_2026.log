@@ -55,3 +55,4 @@
 [2026-01-15 21:59:00 +0700] [COMMIT #51] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
 [2026-01-16 08:43:14 +0700] [COMMIT #52] perf(tunnel): harden tunnel implementation parameters [status: ok]
 [2026-01-16 10:04:09 +0700] [COMMIT #53] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
+[2026-01-16 10:29:06 +0700] [COMMIT #54] refactor(homelab): separate homelab dashboard frontend from monitoring API [status: ok]
