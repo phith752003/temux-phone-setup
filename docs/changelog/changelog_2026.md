@@ -278,3 +278,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `dashboard`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-01-16 19:16:24 +0700] docs(services): document environment variables and Cloudflare token management
+- Type: `docs`
+- Scope: `services`
+- Cycle: 2026 Telemetry Integration
+
