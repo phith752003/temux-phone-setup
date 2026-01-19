@@ -313,3 +313,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `tunnel`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-01-19 21:46:06 +0700] feat(scripts): implement automated proot container startup on boot
+- Type: `feat`
+- Scope: `scripts`
+- Cycle: 2026 Telemetry Integration
+
