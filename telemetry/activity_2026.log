@@ -133,3 +133,4 @@
 [2026-02-10 23:10:28 +0700] [COMMIT #129] fix(cron): prevent Android background aggressive process kill with wake-lock [status: ok]
 [2026-02-11 18:09:10 +0700] [COMMIT #130] fix(network): streamline network implementation parameters [status: ok]
 [2026-02-11 20:00:26 +0700] [COMMIT #131] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
+[2026-02-11 21:46:10 +0700] [COMMIT #132] perf(tunnel): reduce cron polling frequency to conserve battery consumption [status: ok]
