@@ -763,3 +763,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `tunnel`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-02-18 21:54:17 +0700] refactor(scripts): modularize setup.sh into dedicated installer helper scripts
+- Type: `refactor`
+- Scope: `scripts`
+- Cycle: 2026 Telemetry Integration
+
