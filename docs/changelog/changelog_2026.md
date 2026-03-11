@@ -1073,3 +1073,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `homelab`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-03-11 10:09:56 +0700] docs(dashboard): add comprehensive maintainer guide for provisioning Android nodes
+- Type: `docs`
+- Scope: `dashboard`
+- Cycle: 2026 Telemetry Integration
+
