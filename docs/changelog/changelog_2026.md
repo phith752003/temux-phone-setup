@@ -1348,3 +1348,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `cron`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-03-28 20:45:37 +0700] fix(network): resolve DNS resolution timeout during cellular network handover
+- Type: `fix`
+- Scope: `network`
+- Cycle: 2026 Telemetry Integration
+
