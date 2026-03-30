@@ -274,3 +274,4 @@
 [2026-03-28 20:45:37 +0700] [COMMIT #270] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
 [2026-03-30 09:01:44 +0700] [COMMIT #271] perf(termux): enhance termux implementation parameters [status: ok]
 [2026-03-30 14:00:33 +0700] [COMMIT #272] perf(tunnel): reduce cron polling frequency to conserve battery consumption [status: ok]
+[2026-03-30 16:13:57 +0700] [COMMIT #273] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
