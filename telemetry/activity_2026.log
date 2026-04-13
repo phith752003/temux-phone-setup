@@ -312,3 +312,4 @@
 [2026-04-11 20:09:17 +0700] [COMMIT #308] fix(backup): handle broken pkg repository mirrors during setup script run [status: ok]
 [2026-04-13 11:42:00 +0700] [COMMIT #309] fix(cron): prevent Android background aggressive process kill with wake-lock [status: ok]
 [2026-04-13 11:44:33 +0700] [COMMIT #310] fix(network): streamline network implementation parameters [status: ok]
+[2026-04-13 12:20:59 +0700] [COMMIT #311] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
