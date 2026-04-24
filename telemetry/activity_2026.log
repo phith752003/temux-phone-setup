@@ -351,3 +351,4 @@
 [2026-04-23 20:55:01 +0700] [COMMIT #347] feat(security): implement nightly encrypted backup script to remote storage [status: ok]
 [2026-04-24 11:17:38 +0700] [COMMIT #348] fix(backup): handle broken pkg repository mirrors during setup script run [status: ok]
 [2026-04-24 20:03:16 +0700] [COMMIT #349] fix(cron): optimize cron implementation parameters [status: ok]
+[2026-04-24 21:25:31 +0700] [COMMIT #350] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
