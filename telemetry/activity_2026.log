@@ -393,3 +393,4 @@
 [2026-05-06 12:30:13 +0700] [COMMIT #389] fix(cron): prevent Android background aggressive process kill with wake-lock [status: ok]
 [2026-05-06 13:23:32 +0700] [COMMIT #390] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
 [2026-05-06 20:22:38 +0700] [COMMIT #391] perf(termux): enhance termux implementation parameters [status: ok]
+[2026-05-07 15:14:28 +0700] [COMMIT #392] perf(tunnel): reduce cron polling frequency to conserve battery consumption [status: ok]
