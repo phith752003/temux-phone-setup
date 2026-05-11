@@ -2013,3 +2013,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `tunnel`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-05-11 23:22:49 +0700] feat(scripts): update scripts implementation parameters
+- Type: `feat`
+- Scope: `scripts`
+- Cycle: 2026 Telemetry Integration
+
