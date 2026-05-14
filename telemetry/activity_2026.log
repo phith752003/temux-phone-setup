@@ -414,3 +414,4 @@
 [2026-05-13 18:09:01 +0700] [COMMIT #410] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
 [2026-05-13 20:26:09 +0700] [COMMIT #411] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
 [2026-05-14 10:00:52 +0700] [COMMIT #412] perf(tunnel): harden tunnel implementation parameters [status: ok]
+[2026-05-14 11:48:01 +0700] [COMMIT #413] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
