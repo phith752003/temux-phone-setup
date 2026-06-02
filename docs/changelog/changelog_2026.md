@@ -2338,3 +2338,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `security`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-06-02 23:10:27 +0700] fix(backup): handle broken pkg repository mirrors during setup script run
+- Type: `fix`
+- Scope: `backup`
+- Cycle: 2026 Telemetry Integration
+
