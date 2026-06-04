@@ -1,0 +1,54 @@
+# ==========================================
+# .gitignore - Android Termux Homelab Project
+# ==========================================
+
+# --- Log files ---
+*.log
+logs/
+
+# --- Backup files ---
+*.tar.gz
+*.zip
+homelab-backups/
+
+# --- SSH keys (NEVER commit these!) ---
+*.pem
+*.key
+id_rsa
+id_ed25519
+id_ed25519.pub
+authorized_keys
+
+# --- Node.js ---
+node_modules/
+npm-debug.log*
+
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# --- Database files ---
+*.db
+*.sqlite
+*.sqlite3
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*.swo
+*~
+
+# --- Temporary / debug files ---
+check_tags.py
+tags.txt
+*.tmp
