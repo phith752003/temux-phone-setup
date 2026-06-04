@@ -478,3 +478,4 @@
 [2026-06-04 11:44:14 +0700] [COMMIT #474] refactor(homelab): separate homelab dashboard frontend from monitoring API [status: ok]
 [2026-06-04 19:13:16 +0700] [COMMIT #475] docs(dashboard): align dashboard implementation parameters [status: ok]
 [2026-06-04 19:53:18 +0700] [COMMIT #476] docs(services): document environment variables and Cloudflare token management [status: ok]
+[2026-06-04 19:58:33 +0700] [COMMIT #477] chore(security): update base alpine rootfs image and core utility packages [status: ok]
