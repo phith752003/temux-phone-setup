@@ -29,19 +29,27 @@ echo "[3/5] Tạo cấu trúc homelab..."
 mkdir -p ~/homelab/{apis/test-api,bots,data,logs,scripts,tunnels}
 
 # Copy files nếu đã push qua ADB/SCP
-if [ -d "/sdcard/temux-install" ]; then
-    echo "  Tìm thấy files trên sdcard, copying..."
-    cp -r /sdcard/temux-install/apis/* ~/homelab/apis/ 2>/dev/null
-    cp -r /sdcard/temux-install/scripts/* ~/homelab/scripts/ 2>/dev/null
-    cp /sdcard/temux-install/README.md ~/homelab/ 2>/dev/null
+SRC_DIR=""
+if [ -d "$HOME/temux-install" ]; then
+    SRC_DIR="$HOME/temux-install"
+elif [ -d "/sdcard/temux-install" ]; then
+    SRC_DIR="/sdcard/temux-install"
+fi
+
+if [ -n "$SRC_DIR" ]; then
+    echo "  Tìm thấy files tại $SRC_DIR, copying..."
+    cp -r "$SRC_DIR"/apis/* ~/homelab/apis/ 2>/dev/null || true
+    cp -r "$SRC_DIR"/bots/* ~/homelab/bots/ 2>/dev/null || true
+    cp -r "$SRC_DIR"/scripts/* ~/homelab/scripts/ 2>/dev/null || true
+    cp "$SRC_DIR"/README.md ~/homelab/ 2>/dev/null || true
 fi
 
 # Phase 9: Tạo boot directory
 echo ""
 echo "[4/5] Cấu hình auto-start..."
 mkdir -p ~/.termux/boot
-if [ -f "/sdcard/temux-install/boot/start-homelab.sh" ]; then
-    cp /sdcard/temux-install/boot/start-homelab.sh ~/.termux/boot/
+if [ -n "$SRC_DIR" ] && [ -f "$SRC_DIR/boot/start-homelab.sh" ]; then
+    cp "$SRC_DIR/boot/start-homelab.sh" ~/.termux/boot/
 fi
 
 # Set permissions

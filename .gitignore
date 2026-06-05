@@ -52,3 +52,6 @@ Thumbs.db
 check_tags.py
 tags.txt
 *.tmp
+
+# --- Credentials ---
+bots/config.json
