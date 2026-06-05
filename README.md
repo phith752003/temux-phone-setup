@@ -79,3 +79,16 @@ bash ~/homelab/scripts/start-tunnel.sh 8080
 * **Giám sát thời gian thực:** Chạy `bash ~/homelab/scripts/monitor.sh` để bật giao diện monitor tài nguyên và trạng thái các dịch vụ.
 * **Kiểm tra nhiệt độ dưới tải:** Chạy `bash ~/homelab/scripts/stress.sh 2 60` để kiểm tra sự ổn định của nguồn và quạt làm mát trong 60 giây với 2 cores.
 * **Sao lưu dữ liệu:** Sao lưu định kỳ bằng cách chạy `bash ~/homelab/scripts/backup.sh`.
+
+---
+
+## 🗺️ Roadmap
+
+Xem [ROADMAP.md](ROADMAP.md) để biết các ý tưởng và kế hoạch phát triển tiếp theo cho dự án, bao gồm:
+
+* 🚀 Web hosting trên domain `phith.click`
+* 🤖 Nâng cấp Telegram Bot với AI chatbot
+* 🛠️ DevOps pipeline (CI/CD, Git server, reverse proxy)
+* 📡 REST API & webhook services
+* 📊 Dashboard giám sát & analytics
+* 🎓 Learning lab & experimentation
