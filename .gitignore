@@ -55,3 +55,14 @@ tags.txt
 
 # --- Credentials ---
 bots/config.json
+
+# Ignore backup scripts
+*.shb
+*.sshh
+
+# Ignore large downloaded binaries/drivers
+*.exe
+*.whl
+*.whl.1
+platform-tools-dist/
+usb-driver-dist/

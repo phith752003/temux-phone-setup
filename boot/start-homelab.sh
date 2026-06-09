@@ -20,6 +20,12 @@ fi
 # Khởi động API server
 bash ~/homelab/scripts/start-api.sh
 
+# Khởi động Cloudflare Named Tunnel nếu có token
+TOKEN_FILE="$HOME/homelab/tunnels/vsmart-homelab.token"
+if [ -f "$TOKEN_FILE" ]; then
+    bash ~/homelab/scripts/start-named-tunnel.sh
+fi
+
 # Log thời gian boot
 mkdir -p ~/homelab/logs
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Homelab auto-started after boot" >> ~/homelab/logs/boot.log
