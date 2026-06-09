@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tính Lãi Kép & Mục Tiêu Tài Chính | PhiTools</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --color-accent: #10b981; /* Emerald 500 for Finance */
+        }
+        body {
+            @apply bg-zinc-950 text-zinc-100 antialiased;
+        }
+        .input-glass {
+            @apply w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3 text-zinc-100 font-mono text-lg transition-colors focus:outline-none focus:border-emerald-500/50 focus:bg-zinc-900;
+        }
+        label {
+            @apply block text-sm font-medium text-zinc-400 mb-2 uppercase tracking-wider text-[11px];
+        }
+        .result-card {
+            @apply bg-zinc-900/30 border border-zinc-800/50 rounded-2xl p-6 relative overflow-hidden;
+        }
+        /* Topnav subtle border */
+        .topnav { @apply border-b border-white/5 bg-zinc-950/80 backdrop-blur-xl sticky top-0 z-50; }
+    </style>
+</head>
+<body class="min-h-[100dvh] flex flex-col">
+
+    <nav class="topnav">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2 text-zinc-400 hover:text-zinc-100 transition-colors group">
+                <i class="ph ph-arrow-left transition-transform group-hover:-translate-x-1"></i>
+                <span class="font-medium text-sm">Về trang chủ</span>
+            </a>
+            <div class="font-bold text-lg tracking-tight">PhiTools</div>
+        </div>
+    </nav>
+
+    <main class="flex-1 px-6 py-12 max-w-7xl mx-auto w-full grid lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Form Column (Left) -->
+        <div class="lg:col-span-4 flex flex-col gap-8">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight mb-2">Tính Lãi Kép</h1>
+                <p class="text-zinc-400 text-sm leading-relaxed">Dự phóng lợi nhuận đầu tư dựa trên quy tắc kỳ quan thứ 8 của thế giới.</p>
+            </div>
+
+            <form id="calc-form" class="flex flex-col gap-6" onsubmit="event.preventDefault(); calculate();">
+                <div>
+                    <label>Số Tiền Ban Đầu (VNĐ)</label>
+                    <div class="relative">
+                        <input type="number" id="principal" value="100000000" class="input-glass" min="0" step="1000000">
+                    </div>
+                </div>
+
+                <div>
+                    <label>Đóng Góp Hàng Tháng (VNĐ)</label>
+                    <input type="number" id="monthly" value="5000000" class="input-glass" min="0" step="500000">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label>Thời Gian (Năm)</label>
+                        <input type="number" id="years" value="10" class="input-glass" min="1" max="100">
+                    </div>
+                    <div>
+                        <label>Lãi Suất (% / năm)</label>
+                        <input type="number" id="rate" value="12" class="input-glass" step="0.1" min="0">
+                    </div>
+                </div>
+
+                <button type="submit" class="mt-2 w-full bg-emerald-500 text-zinc-950 font-bold text-lg py-4 rounded-xl hover:bg-emerald-400 active:scale-[0.98] transition-all flex justify-center items-center gap-2">
+                    <i class="ph-bold ph-calculator"></i> Tính Toán
+                </button>
+            </form>
+        </div>
+
+        <!-- Result Column (Right) -->
+        <div class="lg:col-span-8 flex flex-col gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="result-card">
+                    <div class="text-zinc-500 text-sm mb-1">Tổng Vốn Bỏ Ra</div>
+                    <div class="text-2xl font-mono font-bold text-zinc-100" id="res-principal">--</div>
+                </div>
+                <div class="result-card">
+                    <div class="text-emerald-500/60 text-sm mb-1">Tổng Lãi Nhận Được</div>
+                    <div class="text-2xl font-mono font-bold text-emerald-400" id="res-interest">--</div>
+                </div>
+                <div class="result-card border-emerald-500/20 bg-emerald-500/5">
+                    <div class="text-emerald-500/80 text-sm mb-1">Tổng Tài Sản Cuối Kỳ</div>
+                    <div class="text-3xl font-mono font-bold text-emerald-500" id="res-total">--</div>
+                </div>
+            </div>
+
+            <div class="result-card flex-1 min-h-[400px]">
+                <canvas id="growthChart"></canvas>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const formatMoney = (num) => new Intl.NumberFormat('vi-VN').format(Math.round(num));
+        let chartInstance = null;
+
+        function calculate() {
+            const P = parseFloat(document.getElementById('principal').value) || 0;
+            const PMT = parseFloat(document.getElementById('monthly').value) || 0;
+            const t = parseFloat(document.getElementById('years').value) || 0;
+            const r = (parseFloat(document.getElementById('rate').value) || 0) / 100;
+            const n = 12; // monthly compounding assumption
+
+            let labels = [];
+            let dataPrincipal = [];
+            let dataTotal = [];
+
+            let currentTotal = P;
+            let totalInvested = P;
+
+            labels.push('Năm 0');
+            dataPrincipal.push(totalInvested);
+            dataTotal.push(currentTotal);
+
+            for (let year = 1; year <= t; year++) {
+                for(let month = 1; month <= 12; month++) {
+                    currentTotal = currentTotal * (1 + r/12) + PMT;
+                    totalInvested += PMT;
+                }
+                labels.push('Năm ' + year);
+                dataPrincipal.push(totalInvested);
+                dataTotal.push(currentTotal);
+            }
+
+            const finalTotal = dataTotal[dataTotal.length - 1];
+            const finalInterest = finalTotal - totalInvested;
+
+            document.getElementById('res-principal').innerText = formatMoney(totalInvested) + ' ₫';
+            document.getElementById('res-interest').innerText = formatMoney(finalInterest) + ' ₫';
+            document.getElementById('res-total').innerText = formatMoney(finalTotal) + ' ₫';
+
+            updateChart(labels, dataPrincipal, dataTotal);
+        }
+
+        function updateChart(labels, dataPrincipal, dataTotal) {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            Chart.defaults.color = '#71717a';
+            Chart.defaults.font.family = "'JetBrains Mono', monospace";
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Vốn gốc (VNĐ)',
+                            data: dataPrincipal,
+                            borderColor: '#52525b', // zinc-600
+                            backgroundColor: 'transparent',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Tổng Tài Sản (VNĐ)',
+                            data: dataTotal,
+                            borderColor: '#10b981', // emerald-500
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { usePointStyle: true } },
+                        tooltip: {
+                            backgroundColor: 'rgba(24, 24, 27, 0.9)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 1,
+                            padding: 12,
+                            callbacks: {
+                                label: (context) => context.dataset.label + ': ' + formatMoney(context.parsed.y) + ' ₫'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: { grid: { color: 'rgba(255,255,255,0.05)' } },
+                        y: { 
+                            grid: { color: 'rgba(255,255,255,0.05)' },
+                            ticks: { callback: (val) => formatMoney(val) }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Run calculation on load
+        calculate();
+    </script>
+</body>
+</html>

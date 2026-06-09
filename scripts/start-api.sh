@@ -1,41 +1,51 @@
 #!/data/data/com.termux/files/usr/bin/bash
-# Khởi động FastAPI trong tmux session
+# Khởi động các dịch vụ FastAPI trong tmux session
 
-SESSION="test-api"
-API_DIR="$HOME/homelab/apis/test-api"
-PORT=3000
-LOG="$HOME/homelab/logs/api.log"
+# Hàm hỗ trợ khởi động một API service
+start_api() {
+    local SESSION=$1
+    local API_DIR=$2
+    local PORT=$3
+    local LOG=$4
 
-# Kiểm tra session đã tồn tại chưa
-if tmux has-session -t "$SESSION" 2>/dev/null; then
-    echo "Cảnh báo: Session '$SESSION' đang hoạt động."
-    echo "Sử dụng lệnh: tmux attach -t $SESSION để truy cập."
-    exit 0
-fi
+    echo "Khởi động service $SESSION trên port $PORT..."
 
-# Kiểm tra port đã bị chiếm chưa
-if ss -tlnp 2>/dev/null | grep -q ":$PORT "; then
-    echo "Lỗi: Port $PORT đã bị chiếm bởi tiến trình khác!"
-    ss -tlnp | grep ":$PORT "
-    exit 1
-fi
+    # Kiểm tra session đã tồn tại chưa
+    if tmux has-session -t "$SESSION" 2>/dev/null; then
+        echo " -> Cảnh báo: Session '$SESSION' đang hoạt động."
+        echo " -> Sử dụng lệnh: tmux attach -t $SESSION để truy cập."
+        return 0
+    fi
 
-# Tạo thư mục log nếu chưa có
-mkdir -p "$(dirname "$LOG")"
+    # Kiểm tra port đã bị chiếm chưa
+    if ss -tlnp 2>/dev/null | grep -q ":$PORT "; then
+        echo " -> Lỗi: Port $PORT đã bị chiếm bởi tiến trình khác!"
+        return 1
+    fi
 
-# Khởi động trong tmux
-tmux new-session -d -s "$SESSION" -c "$API_DIR" \
-    "uvicorn main:app --host 0.0.0.0 --port $PORT 2>&1 | tee -a $LOG"
+    # Tạo thư mục log nếu chưa có
+    mkdir -p "$(dirname "$LOG")"
 
-sleep 2
+    # Khởi động trong tmux
+    tmux new-session -d -s "$SESSION" -c "$API_DIR" \
+        "uvicorn main:app --host 0.0.0.0 --port $PORT 2>&1 | tee -a $LOG"
 
-# Kiểm tra thành công
-if tmux has-session -t "$SESSION" 2>/dev/null; then
-    echo "API server đã khởi động thành công trên port $PORT"
-    echo "  Session: $SESSION"
-    echo "  Đường dẫn Log: $LOG"
-else
-    echo "Lỗi: Khởi động thất bại. Chi tiết log bên dưới:"
-    tail -20 "$LOG" 2>/dev/null
-    exit 1
-fi
+    sleep 2
+
+    # Kiểm tra thành công
+    if tmux has-session -t "$SESSION" 2>/dev/null; then
+        echo " -> [OK] Đã khởi động $SESSION trên port $PORT"
+    else
+        echo " -> [LỖI] Khởi động thất bại. Kiểm tra log: $LOG"
+    fi
+}
+
+echo "=== STARTING ALL HOMELAB APIs ==="
+
+# 1. Homelab Private API (Dashboard)
+start_api "homelab-private" "$HOME/homelab/apis/test-api" 3000 "$HOME/homelab/logs/api_private.log"
+
+# 2. Public API (URL Shortener, SaaS endpoints)
+start_api "homelab-public" "$HOME/homelab/apis/public-api" 3001 "$HOME/homelab/logs/api_public.log"
+
+echo "=== HOÀN TẤT ==="

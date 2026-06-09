@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>JSON Formatter & Validator | PhiTools</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --color-accent: #f59e0b; /* Amber for JSON */
+        }
+        body {
+            @apply bg-zinc-950 text-zinc-100 antialiased h-[100dvh] flex flex-col overflow-hidden;
+        }
+        .code-area {
+            @apply w-full h-full bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 text-zinc-300 font-mono text-sm resize-none focus:outline-none focus:border-amber-500/50 focus:bg-zinc-900 transition-colors;
+        }
+        .topnav { @apply border-b border-white/5 bg-zinc-950/80 backdrop-blur-xl shrink-0; }
+        
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #52525b; }
+    </style>
+</head>
+<body>
+
+    <nav class="topnav">
+        <div class="max-w-screen-2xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center gap-2 text-zinc-400 hover:text-zinc-100 transition-colors group">
+                <i class="ph ph-arrow-left transition-transform group-hover:-translate-x-1"></i>
+                <span class="font-medium text-sm">Về trang chủ</span>
+            </a>
+            <div class="font-bold text-lg tracking-tight text-amber-500">JSON Formatter</div>
+        </div>
+    </nav>
+
+    <main class="flex-1 max-w-screen-2xl mx-auto w-full p-6 flex flex-col gap-4 relative">
+        
+        <!-- Toolbar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 shrink-0 bg-zinc-900/40 p-2 rounded-xl border border-white/5 backdrop-blur-md">
+            <div class="flex gap-2">
+                <button onclick="formatJSON(2)" class="px-4 py-2 bg-zinc-800 hover:bg-amber-500 hover:text-zinc-950 text-sm font-bold rounded-lg transition-colors flex items-center gap-2">
+                    <i class="ph-bold ph-text-align-left"></i> Format (2 spaces)
+                </button>
+                <button onclick="minifyJSON()" class="px-4 py-2 bg-zinc-800 hover:bg-amber-500 hover:text-zinc-950 text-sm font-bold rounded-lg transition-colors hidden sm:flex items-center gap-2">
+                    <i class="ph-bold ph-arrows-in-line-horizontal"></i> Minify
+                </button>
+            </div>
+            
+            <div class="flex gap-2">
+                <button onclick="copyResult()" class="px-3 py-2 bg-zinc-800 hover:bg-zinc-700 text-sm font-bold rounded-lg transition-colors flex items-center gap-2" title="Copy">
+                    <i class="ph-bold ph-copy"></i>
+                </button>
+                <button onclick="clearText()" class="px-3 py-2 bg-zinc-800 hover:bg-red-500/20 hover:text-red-400 text-sm font-bold rounded-lg transition-colors flex items-center gap-2" title="Clear">
+                    <i class="ph-bold ph-trash"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Editor Area -->
+        <div class="flex-1 relative min-h-0">
+            <textarea id="json-input" class="code-area w-full h-full p-6 text-[13px] leading-relaxed" placeholder='Dán chuỗi JSON vào đây...&#10;Ví dụ: {"name": "PhiTools", "status": "active"}'></textarea>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-zinc-800 border border-zinc-700 text-white px-4 py-3 rounded-lg shadow-xl transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-2">
+        <i id="toast-icon" class="ph-fill ph-check-circle text-emerald-400"></i>
+        <span id="toast-msg">Đã copy</span>
+    </div>
+
+    <script>
+        const inputEl = document.getElementById('json-input');
+
+        function showToast(msg, isError = false) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            
+            const icon = document.getElementById('toast-icon');
+            icon.className = isError ? "ph-fill ph-warning text-red-400" : "ph-fill ph-check-circle text-emerald-400";
+            
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        function getParsed() {
+            const raw = inputEl.value.trim();
+            if(!raw) return null;
+            try {
+                return JSON.parse(raw);
+            } catch (e) {
+                showToast(`Lỗi cú pháp: ${e.message}`, true);
+                return null;
+            }
+        }
+
+        function formatJSON(spaces) {
+            const obj = getParsed();
+            if(obj) {
+                inputEl.value = JSON.stringify(obj, null, spaces);
+                showToast('Format thành công!');
+            }
+        }
+
+        function minifyJSON() {
+            const obj = getParsed();
+            if(obj) {
+                inputEl.value = JSON.stringify(obj);
+                showToast('Minify thành công!');
+            }
+        }
+
+        function clearText() {
+            inputEl.value = '';
+            inputEl.focus();
+        }
+
+        async function copyResult() {
+            if(!inputEl.value) return;
+            try {
+                await navigator.clipboard.writeText(inputEl.value);
+                showToast('Đã copy vào clipboard!');
+            } catch (err) {
+                showToast('Không thể copy', true);
+            }
+        }
+    </script>
+</body>
+</html>

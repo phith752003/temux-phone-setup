@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PhiTools — Bộ Công Cụ Tiện Ích Cao Cấp</title>
+    <meta name="description" content="Tập hợp các công cụ tính toán tài chính, lập trình và chuyển đổi định dạng xử lý 100% tại trình duyệt. Nhanh, an toàn, bảo mật.">
+    
+    <!-- Fonts: Outfit (Display) + JetBrains Mono (Tech/Numbers) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind v4 via CDN -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <!-- GSAP for Smooth Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --color-accent: #00f2fe;
+            --color-surface: #121214;
+            --color-surface-hover: #1c1c1f;
+        }
+
+        body {
+            @apply bg-zinc-950 text-zinc-100 antialiased selection:bg-accent/30 selection:text-accent;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 242, 254, 0.04), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.04), transparent 25%);
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            @apply bg-zinc-900/40 backdrop-blur-xl border border-white/5 rounded-2xl transition-all duration-300;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-panel:hover {
+            @apply bg-zinc-900/60 border-white/10;
+            transform: translateY(-2px);
+        }
+
+        .tool-card {
+            @apply p-6 flex flex-col gap-4 cursor-pointer relative overflow-hidden group;
+        }
+
+        /* Subtle glow effect on hover */
+        .tool-card::before {
+            content: '';
+            @apply absolute inset-0 opacity-0 transition-opacity duration-500 pointer-events-none;
+            background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
+        }
+        .tool-card:hover::before {
+            @apply opacity-100;
+        }
+
+        .icon-box {
+            @apply w-12 h-12 rounded-xl flex items-center justify-center text-2xl mb-2 transition-transform duration-300 group-hover:scale-110;
+        }
+    </style>
+</head>
+<body class="min-h-[100dvh] flex flex-col relative overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-panel !rounded-none !border-x-0 !border-t-0 !backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded bg-gradient-to-br from-[#00f2fe] to-[#4facfe] flex items-center justify-center">
+                    <i class="ph-bold ph-lightning text-zinc-950"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">PhiTools</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                <a href="#finance" class="hover:text-zinc-100 transition-colors">Tài Chính</a>
+                <a href="#dev" class="hover:text-zinc-100 transition-colors">Lập Trình</a>
+                <a href="#convert" class="hover:text-zinc-100 transition-colors">Chuyển Đổi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="flex-1 pt-32 pb-24 px-6 max-w-7xl mx-auto w-full">
+        <header class="max-w-3xl mb-20 gsap-reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-medium mb-6">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                Xử lý 100% tại trình duyệt • Bảo mật tuyệt đối
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tighter leading-[1.1] mb-6 text-zinc-50">
+                Bộ công cụ <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00f2fe] to-[#4facfe]">sắc bén</span><br>cho hiệu suất tối đa.
+            </h1>
+            <p class="text-lg text-zinc-400 leading-relaxed max-w-[60ch]">
+                Không upload. Không lưu trữ. Không chờ đợi. Các công cụ tính toán, lập trình và chuyển đổi mạnh mẽ hoạt động ngay lập tức trên máy của bạn.
+            </p>
+        </header>
+
+        <!-- Tool Grid: Finance -->
+        <section id="finance" class="mb-16 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="ph-bold ph-chart-line-up text-2xl text-emerald-400"></i>
+                <h2 class="text-2xl font-semibold text-zinc-200">Tài Chính & Phân Tích</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <a href="tools/compound-interest.html" class="tool-card glass-panel gsap-item">
+                    <div class="icon-box bg-emerald-500/10 text-emerald-400">
+                        <i class="ph ph-chart-polar"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-zinc-100 mb-2">Tính Lãi Kép</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Mô phỏng sức mạnh của lãi kép qua nhiều năm. Tính toán mục tiêu tài chính tự do.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="tool-card glass-panel gsap-item">
+                    <div class="icon-box bg-emerald-500/10 text-emerald-400">
+                        <i class="ph ph-money"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-zinc-100 mb-2">Thuế TNCN 2026</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Tính toán lương Net/Gross và các khoản đóng bảo hiểm, thuế TNCN theo luật Việt Nam.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="tool-card glass-panel gsap-item">
+                    <div class="icon-box bg-emerald-500/10 text-emerald-400">
+                        <i class="ph ph-percent"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-zinc-100 mb-2">Tính Lãi Vay</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Ước tính lịch trả nợ vay mua nhà, mua xe hàng tháng theo dư nợ giảm dần.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Tool Grid: Developer -->
+        <section id="dev" class="mb-16 scroll-mt-24">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="ph-bold ph-code text-2xl text-[#00f2fe]"></i>
+                <h2 class="text-2xl font-semibold text-zinc-200">Công Cụ Lập Trình</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <a href="tools/base64.html" class="tool-card glass-panel gsap-item">
+                    <div class="icon-box bg-[#00f2fe]/10 text-[#00f2fe]">
+                        <i class="ph ph-brackets-curly"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-zinc-100 mb-2">Base64 Encode/Decode</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Mã hóa và giải mã chuỗi text hoặc file sang định dạng Base64 ngay lập tức.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="tools/json-format.html" class="tool-card glass-panel gsap-item">
+                    <div class="icon-box bg-[#00f2fe]/10 text-[#00f2fe]">
+                        <i class="ph ph-tree-structure"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-zinc-100 mb-2">JSON Formatter</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Làm đẹp, nén và validate cấu trúc JSON. Xử lý chuỗi JSON khổng lồ không bị giật lag.
+                        </p>
+                    </div>
+                </a>
+
+                <a href="#" class="tool-card glass-panel gsap-item">
+                    <div class="icon-box bg-[#00f2fe]/10 text-[#00f2fe]">
+                        <i class="ph ph-key"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-zinc-100 mb-2">Bcrypt Hash Generator</h3>
+                        <p class="text-sm text-zinc-400 leading-relaxed">
+                            Tạo hash mật khẩu an toàn bằng thuật toán Bcrypt hoặc so sánh hash.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-auto border-t border-white/5 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-zinc-500">
+            <p>&copy; 2026 PhiTools. Xây dựng trên nền tảng Homelab.</p>
+            <div class="flex items-center gap-4">
+                <a href="#" class="hover:text-zinc-300 transition-colors">Điều khoản</a>
+                <a href="#" class="hover:text-zinc-300 transition-colors">Bảo mật</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Magnetic glow effect for cards
+        document.querySelectorAll('.tool-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // Entrance Animation
+        gsap.fromTo(".gsap-reveal", 
+            { y: 30, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+        );
+        
+        gsap.fromTo(".gsap-item", 
+            { y: 20, opacity: 0 }, 
+            { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power2.out", delay: 0.3 }
+        );
+    </script>
+</body>
+</html>
