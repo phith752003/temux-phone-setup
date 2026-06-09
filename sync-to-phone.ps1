@@ -1,7 +1,7 @@
 # sync-to-phone.ps1
 # Script to sync this project directory to the phone via SFTP using the 'phone' SSH host alias.
 
-$SshHost = "phone"
+$SshHost = "homelab"
 $RemoteBaseDir = "temux-install"
 
 Write-Host "=========================================" -ForegroundColor Cyan

@@ -1,52 +1,466 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xin chào từ Android Homelab</title>
-    <style>
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            font-family: system-ui, -apple-system, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .card {
-            text-align: center;
-            background: rgba(30, 41, 59, 0.7);
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            backdrop-filter: blur(10px);
-        }
-        h1 {
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-        }
-        p { color: #94a3b8; }
-        .badge {
-            background: rgba(16, 185, 129, 0.2);
-            color: #34d399;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-top: 1rem;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hoàng Phi — Chuyên viên tư vấn Ocean Edu Phủ Lý</title>
+  <meta name="description" content="Trang giới thiệu chuyên viên tư vấn Ocean Edu Phủ Lý dành cho phụ huynh. Đặt lịch tư vấn miễn phí, kiểm tra đầu vào và lộ trình học rõ ràng." />
+  <link rel="icon" href="favicon.ico" />
+  <meta name="theme-color" content="#0066cc" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hoàng Phi — Chuyên viên tư vấn Ocean Edu Phủ Lý" />
+  <meta property="og:description" content="Giúp quý phụ huynh chọn khóa tiếng Anh phù hợp nhất cho con. Đặt lịch tư vấn miễn phí." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="hero.jpg" /> <!-- TODO: ảnh chia sẻ -->
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Hoàng Phi",
+    "jobTitle":"Chuyên viên tư vấn tuyển sinh",
+    "worksFor":{
+      "@type":"Organization",
+      "name":"Ocean Edu Phủ Lý"
+    },
+    "image":"hero.jpg",
+    "telephone":"+84-9xx-xxx-xxx",
+    "sameAs":["https://facebook.com/yourprofile"]
+  }
+  </script>
+
+  <style>
+    :root{
+      --primary:#0066cc;         /* Ocean blue */
+      --primary-600:#005bb6;
+      --accent:#0cc0df;          /* bright aqua */
+      --ink:#0f172a;             /* dark text */
+      --muted:#475569;           /* secondary text */
+      --bg:#f8fafc;              /* page background */
+      --card:#ffffff;            /* surface */
+      --ring: rgba(0,102,204,.25);
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(2,12,27,.08);
+    }
+    * { box-sizing: border-box }
+    html,body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; color:var(--ink); background:var(--bg); }
+    a{ color:var(--primary); text-decoration: none }
+    img{ max-width:100%; height:auto; border-radius:12px }
+    section{ padding: 80px 20px; scroll-margin-top:90px }
+    .container{ max-width: 1120px; margin: 0 auto }
+
+    /* Header */
+    header{
+      position: sticky; top:0; z-index:1000;
+      background: rgba(255,255,255,.8); backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid #e6ebf2;
+    }
+    .nav{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 20px }
+    .brand{ display:flex; align-items:center; gap:12px; font-weight:700; }
+    .brand .logo{
+       border-radius:8px; display:grid; place-items:center;
+      color:#fff; font-size:18px; font-weight:800;
+    }
+    .nav a{ font-weight:600; color:#0b2a4a }
+    .menu{ display:flex; gap:22px; align-items:center }
+    .cta{
+      background: var(--primary);
+      color:#fff; padding:12px 18px; border-radius:999px; font-weight:700; box-shadow: 0 6px 18px rgba(0,102,204,.25);
+      transition: transform .1s ease, background .2s ease;
+    }
+    .cta:hover{ background:var(--primary-600); transform: translateY(-1px) }
+    .hamburger{ display:none; cursor:pointer; padding:10px; border-radius:10px}
+    .hamburger:focus{ outline: 3px solid var(--ring) }
+
+    /* Hero */
+    .hero{
+      position:relative; padding: 96px 20px 80px; overflow:hidden; background:
+        radial-gradient(1200px 500px at 80% -10%, rgba(12,192,223,.18), transparent 60%),
+        radial-gradient(1000px 400px at -10% 20%, rgba(0,102,204,.10), transparent 60%);
+    }
+    .hero .wrap{ display:grid; grid-template-columns: 1.1fr .9fr; gap:36px; align-items:center }
+    .hero h1{ font-size: clamp(28px, 4vw, 44px); margin: 0 0 12px }
+    .hero p.lead{ color:var(--muted); font-size: clamp(16px, 1.6vw, 20px); margin: 0 0 22px }
+    .hero .actions{ display:flex; gap:12px; flex-wrap:wrap }
+    .badge{
+      display:inline-flex; align-items:center; gap:8px; background:#fff; padding:10px 14px; border-radius:999px; box-shadow: var(--shadow)
+    }
+    .card{
+      background:var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding:22px
+    }
+
+    /* About */
+    .grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap:28px }
+    .kicker{ letter-spacing:.12em; text-transform:uppercase; color:var(--primary); font-weight:800; font-size:12px; margin-bottom:8px }
+    h2{ font-size: clamp(22px, 3vw, 32px); margin: 0 0 14px }
+    .muted{ color:var(--muted) }
+    .list{ display:grid; gap:10px; margin: 14px 0 0; padding-left: 0; list-style: none }
+    .list li{ display:flex; gap:10px; align-items:flex-start }
+    .check{ width:20px; height:20px; border-radius:6px; background:linear-gradient(135deg,var(--primary),var(--accent)); display:grid; place-items:center; color:#fff; font-size:14px; flex:0 0 20px }
+
+    /* Benefits */
+    .cards{ display:grid; grid-template-columns: repeat(4, 1fr); gap:16px }
+    .cards .card h3{ margin: 10px 0 8px; font-size:18px }
+
+    /* Process */
+    .steps{ display:grid; gap:16px }
+    .step{ display:grid; grid-template-columns: 48px 1fr; gap:16px; align-items:start }
+    .num{ width:48px; height:48px; border-radius:12px; background:#fff; box-shadow: var(--shadow); display:grid; place-items:center; font-weight:800; color:var(--primary) }
+
+    /* Success */
+    .testis{ display:grid; grid-template-columns: repeat(3, 1fr); gap:16px }
+    blockquote{ margin:0; font-style:italic }
+    .tag{ display:inline-block; background:#eef6ff; border:1px solid #d7e9ff; color:#0b3b71; padding:4px 10px; border-radius:999px; font-size:12px; font-weight:700 }
+
+    /* Contact */
+    form{ display:grid; gap:12px }
+    input, textarea, select{
+      width:100%; padding:12px 14px; border:1px solid #e3e8ef; border-radius:12px; background:#fff;
+      font: inherit; color:inherit; transition: border .15s ease, box-shadow .15s ease
+    }
+    input:focus, textarea:focus, select:focus{ outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px var(--ring) }
+    label{ font-weight:700; font-size:14px }
+    .grid-form{ display:grid; grid-template-columns: 1fr 1fr; gap:12px }
+    .help{ font-size:12px; color:var(--muted) }
+
+    /* Footer */
+    footer{ padding: 32px 20px; color:#5b667a }
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .hero .wrap, .grid-2{ grid-template-columns: 1fr }
+      .cards{ grid-template-columns: 1fr 1fr }
+      .testis{ grid-template-columns: 1fr 1fr }
+      .menu{ display:none }
+      .hamburger{ display:block }
+    }
+    @media (max-width: 640px){
+      .cards{ grid-template-columns: 1fr }
+      .testis{ grid-template-columns: 1fr }
+      section{ padding: 64px 16px }
+    }
+
+    /* A11y reduced motion */
+    @media (prefers-reduced-motion: no-preference){
+      .floaty{ animation: float 8s ease-in-out infinite }
+      @keyframes float{
+        0%,100%{ transform: translateY(0) }
+        50%{ transform: translateY(-8px) }
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <h1>HEHEHEH Mini của Phi Đẹp trai</h1>
-        <p>Website của bạn đang chạy native trên Android!</p>
-        <div class="badge">Trạng thái: ONLINE</div>
+
+  <!-- Header -->
+  <header aria-label="Thanh điều hướng">
+    <nav class="nav container">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><img src="logo.png" alt="Ocean Edu Phủ Lý" width="50" height=""></div>
+        <div>
+          <div style="font-size:15px; line-height:1; color:#0b2a4a">Hoàng Phi</div>
+          <small class="muted">Chuyên viên tư vấn • Ocean Edu Phủ Lý</small>
+        </div>
+      </div>
+
+      <div class="menu" role="menubar" aria-label="Liên kết điều hướng">
+        <a href="#home" role="menuitem">Trang chủ</a>
+        <a href="#about" role="menuitem">Giới thiệu</a>
+        <a href="#benefits" role="menuitem">Lợi ích</a>
+        <a href="#process" role="menuitem">Quy trình</a>
+        <a href="#success" role="menuitem">Thành công</a>
+        <a href="#contact" role="menuitem">Liên hệ</a>
+        <a class="cta" href="#contact">Đặt lịch tư vấn miễn phí</a>
+      </div>
+
+      <button class="hamburger" aria-label="Mở menu" id="hamburger">
+        ☰
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero" aria-label="Trang chủ">
+    <div class="container wrap">
+      <div>
+        <span class="kicker">Ocean Edu Phủ Lý • Tư vấn tuyển sinh</span>
+        <h1>Xin chào! Tôi là <span style="color:var(--primary)">Hoàng Phi</span>.</h1>
+        <p class="lead">
+          Tôi giúp quý phụ huynh tìm được khóa học tiếng Anh phù hợp nhất cho con,
+          với lộ trình rõ ràng, hiệu quả và đảm bảo trải nghiệm học tập tốt nhất.
+        </p>
+        <div class="actions">
+          <a class="cta" href="#contact" aria-label="Đi tới biểu mẫu liên hệ">Đặt lịch tư vấn miễn phí</a>
+          <a class="badge" href="#benefits" aria-label="Xem lợi ích tại Ocean Edu Phủ Lý">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Xem lợi ích
+          </a>
+        </div>
+        <p class="help" style="margin-top:12px">• Phản hồi trong giờ làm việc • Bảo mật thông tin phụ huynh</p>
+      </div>
+      <div class="card floaty" aria-label="Ảnh minh họa">
+        <img src="hero.jpg" alt="Ocean Edu Phủ Lý" loading="eager" />
+        <!-- TODO: Thay ảnh bìa (hero.jpg) -->
+      </div>
     </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" aria-label="Giới thiệu về tôi">
+    <div class="container grid-2">
+      <div>
+        <span class="kicker">Giới thiệu</span>
+        <h2>Về tôi</h2>
+        <p class="muted">Vai trò &amp; kinh nghiệm tại Ocean Edu Phủ Lý</p>
+        <ul class="list">
+          <li><span class="check">✓</span> Chuyên viên tư vấn tuyển sinh tại Ocean Edu — <strong><!-- TODO: -->1 năm</strong>.</li>
+          <li><span class="check">✓</span> Phong cách làm việc: <strong>chuyên nghiệp</strong> – <strong>thân thiện</strong> – <strong>trung thực</strong>.</li>
+          <li><span class="check">✓</span> Thế mạnh: giọng nói dễ nghe, thấu hiểu tâm lý phụ huynh, sắp xếp lộ trình học cá nhân hoá.</li>
+        </ul>
+        <blockquote style="margin-top:16px">“Giúp con bạn học tiếng Anh tốt hơn không chỉ là công việc của tôi – mà là niềm vui của tôi mỗi ngày.”</blockquote>
+      </div>
+      <div class="card">
+        <img src="avatar.jpg" alt="Ảnh chân dung Hoàng Phi" loading="lazy" />
+        <!-- TODO: Thay ảnh cá nhân (avatar.jpg) -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section id="benefits" aria-label="Lợi ích khi học tại Ocean Edu Phủ Lý">
+    <div class="container">
+      <span class="kicker">Lợi ích</span>
+      <h2>Vì sao phụ huynh chọn Ocean Edu Phủ Lý</h2>
+      <div class="cards" style="margin-top:16px">
+        <article class="card">
+          <div class="tag">Giáo viên</div>
+          <h3>Giáo viên bản ngữ &amp; Việt Nam giàu kinh nghiệm</h3>
+          <p class="muted">Kết hợp phương pháp giảng dạy hiện đại, chú trọng giao tiếp và phản xạ.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Giáo trình</div>
+          <h3>Giáo trình quốc tế, kiểm tra đầu vào miễn phí</h3>
+          <p class="muted">Xác định trình độ ban đầu để đưa ra lộ trình phù hợp ngay từ đầu.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Theo dõi</div>
+          <h3>Báo cáo tiến bộ định kỳ cho phụ huynh</h3>
+          <p class="muted">Cập nhật kết quả &amp; mục tiêu mỗi giai đoạn, minh bạch và dễ theo dõi.</p>
+        </article>
+        <article class="card">
+          <div class="tag">Cơ hội</div>
+          <h3>Hoạt động ngoại khóa &amp; thi chứng chỉ quốc tế</h3>
+          <p class="muted">Cambridge, IELTS… giúp học viên có mục tiêu rõ ràng và động lực bền bỉ.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" aria-label="Quy trình đăng ký học">
+    <div class="container">
+      <span class="kicker">Quy trình</span>
+      <h2>Đăng ký học chỉ với 4 bước</h2>
+      <div class="steps" style="margin-top:16px">
+        <div class="step"><div class="num">1</div><div><strong>Đăng ký lịch hẹn tư vấn</strong><br><span class="muted">Điền form hoặc liên hệ trực tiếp.</span></div></div>
+        <div class="step"><div class="num">2</div><div><strong>Kiểm tra đầu vào miễn phí</strong><br><span class="muted">Đo năng lực hiện tại &amp; mục tiêu.</span></div></div>
+        <div class="step"><div class="num">3</div><div><strong>Chọn khóa học &amp; thời gian phù hợp</strong><br><span class="muted">Cá nhân hóa theo lịch của gia đình.</span></div></div>
+        <div class="step"><div class="num">4</div><div><strong>Ký hợp đồng &amp; bắt đầu học</strong><br><span class="muted">Hỗ trợ xuyên suốt quá trình học.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Success Stories -->
+  <section id="success" aria-label="Câu chuyện thành công">
+    <div class="container">
+      <span class="kicker">Kết quả</span>
+      <h2>Câu chuyện thành công</h2>
+
+      <div class="testis" style="margin-top:16px">
+        <article class="card">
+          <img src="student-a-before-after.jpg" alt="Học viên A trước và sau khi học" loading="lazy" />
+          <p style="margin:10px 0 6px"><span class="tag">Trước: nhút nhát</span> &nbsp; <span class="tag">Sau: tự tin giao tiếp</span></p>
+          <blockquote>“Con giao tiếp tự nhiên hơn hẳn sau 3 tháng. Cảm ơn cô/chú Hoàng Phi đã theo sát lộ trình.”</blockquote>
+          <p class="muted">— Phụ huynh học viên A</p>
+        </article>
+
+        <article class="card">
+          <img src="student-b.jpg" alt="Học viên B nhận chứng chỉ Cambridge" loading="lazy" />
+          <p style="margin:10px 0 6px"><span class="tag">Cambridge</span> &nbsp; <span class="tag">YLE Movers</span></p>
+          <blockquote>“Báo cáo tiến bộ rõ ràng, con biết mình cần cải thiện gì mỗi tuần.”</blockquote>
+          <p class="muted">— Phụ huynh học viên B</p>
+        </article>
+
+        <article class="card">
+          <div style="aspect-ratio:16/9; background:#000; border-radius:12px; overflow:hidden">
+            <!-- TODO: Thay video cảm nhận -->
+            <video controls width="100%" poster="video-poster.jpg" style="display:block">
+              <source src="testimonial.mp4" type="video/mp4" />
+              Trình duyệt của bạn không hỗ trợ video.
+            </video>
+          </div>
+          <p class="muted" style="margin-top:8px">Video cảm nhận của phụ huynh (nếu có).</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-label="Liên hệ">
+    <div class="container grid-2">
+      <div>
+        <span class="kicker">Liên hệ</span>
+        <h2>Đặt lịch tư vấn miễn phí</h2>
+        <p class="muted">Điền thông tin dưới đây, tôi sẽ liên hệ trong giờ làm việc để hỗ trợ nhanh nhất.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="grid-form">
+            <div>
+              <label for="parentName">Họ tên phụ huynh *</label>
+              <input id="parentName" name="parentName" required autocomplete="name" />
+            </div>
+            <div>
+              <label for="phone">Số điện thoại *</label>
+              <input id="phone" name="phone" inputmode="tel" required placeholder="0xxxxxxxxx"
+                     pattern="^(\+?84|0)\d{9,10}$" />
+              <div class="help">Ví dụ: 0912345678 hoặc +84912345678</div>
+            </div>
+          </div>
+
+          <div class="grid-form">
+            <div>
+              <label for="childName">Tên học viên</label>
+              <input id="childName" name="childName" autocomplete="given-name" />
+            </div>
+            <div>
+              <label for="age">Độ tuổi</label>
+              <select id="age" name="age">
+                <option value="">Chọn</option>
+                <option>4–6</option><option>7–9</option><option>10–12</option>
+                <option>13–15</option><option>16–18</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="time">Khung giờ thuận tiện</label>
+            <select id="time" name="time">
+              <option value="">Chọn</option>
+              <option>Sáng (08:00–11:00)</option>
+              <option>Chiều (13:30–17:00)</option>
+              <option>Tối (18:00–20:30)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message">Nhu cầu cụ thể</label>
+            <textarea id="message" name="message" rows="4" placeholder="Ví dụ: cần ôn Cambridge Movers trong 3 tháng..."></textarea>
+          </div>
+
+          <div style="display:flex; gap:10px; flex-wrap:wrap">
+            <button class="cta" type="submit">Gửi yêu cầu</button>
+            <a class="badge" id="callNow" href="tel:+849xxxxxxxx" rel="nofollow">Gọi ngay</a> <!-- TODO: số điện thoại -->
+            <a class="badge" id="zaloBtn" href="https://zalo.me/09xxxxxxxx" target="_blank" rel="noopener">Zalo</a> <!-- TODO: Zalo -->
+            <a class="badge" id="fbBtn" href="https://facebook.com/yourprofile" target="_blank" rel="noopener">Facebook</a> <!-- TODO: Facebook -->
+          </div>
+
+          <div id="formMsg" aria-live="polite" class="help" style="margin-top:8px"></div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-top:0">Vị trí trung tâm</h3>
+        <p class="muted">Mời phụ huynh ghé trải nghiệm lớp học mẫu.</p>
+        <div style="border-radius:12px; overflow:hidden">
+          <!-- TODO: thay địa chỉ trung tâm cụ thể -->
+          <iframe title="Bản đồ Ocean Edu Phủ Lý" src="https://www.google.com/maps?q=Ocean%20Edu&output=embed" loading="lazy" width="100%" height="320" style="border:0"></iframe>
+        </div>
+        <p class="help" style="margin-top:8px">* Ocean Edu Phủ Lý là thương hiệu thuộc chủ sở hữu tương ứng. Trang này do cá nhân Hoàng Phi vận hành nhằm hỗ trợ phụ huynh.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <small>© <span id="year"></span> Hoàng Phi. All rights reserved.</small>
+      <small><a href="#home">Lên đầu trang ↑</a></small>
+    </div>
+  </footer>
+
+  <script>
+    // ==== Mobile menu toggle ====
+    const hamburger = document.getElementById('hamburger');
+    const menu = document.querySelector('.menu');
+    hamburger?.addEventListener('click', () => {
+      const opened = menu.style.display === 'flex';
+      menu.style.display = opened ? 'none' : 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.gap = '12px';
+    });
+
+    // ==== Smooth scroll for same-page links ====
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+          if (window.innerWidth < 980) { menu.style.display = 'none'; }
+        }
+      })
+    });
+
+    // ==== Footer year ====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ==== Contact form handler ====
+    const form = document.getElementById('contactForm');
+    const msg = document.getElementById('formMsg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const parentName = form.parentName.value.trim();
+      const phone = form.phone.value.trim();
+      const childName = form.childName.value.trim();
+      const age = form.age.value;
+      const time = form.time.value;
+      const note = form.message.value.trim();
+
+      if (!form.reportValidity()) {
+        msg.textContent = 'Vui lòng kiểm tra các trường bắt buộc.';
+        return;
+      }
+
+      // Compose email body
+      const subject = encodeURIComponent('Yêu cầu tư vấn Ocean Edu Phủ Lý');
+      const body = encodeURIComponent(
+`Phụ huynh: ${parentName}
+SĐT: ${phone}
+Học viên: ${childName || '(chưa cung cấp)'}
+Độ tuổi: ${age || '(chưa chọn)'}
+Khung giờ: ${time || '(chưa chọn)'}
+Nhu cầu: ${note || '(chưa ghi)'}`
+      );
+
+      // TODO: thay email nhận ở dưới
+      const toEmail = 'your.email@example.com';
+      const mailto = `mailto:${toEmail}?subject=${subject}&body=${body}`;
+
+      // Optional: WhatsApp / Zalo deep-link (nếu muốn dùng WhatsApp, thay số)
+      // const wa = `https://wa.me/84xxxxxxxxx?text=${body}`;
+
+      window.location.href = mailto;
+      msg.textContent = 'Đã mở ứng dụng email của bạn. Nếu không thấy, vui lòng gọi/Zalo giúp tôi nhé!';
+    });
+
+    // Accessibility: close menu on resize up
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 980) menu.style.display = '';
+    });
+  </script>
 </body>
 </html>

@@ -37,7 +37,7 @@ if tmux has-session -t "$SESSION" 2>/dev/null; then
 fi
 
 echo "Đang khởi chạy Cloudflare Named Tunnel..."
-tmux new-session -d -s "$SESSION" "cloudflared tunnel run --url http://localhost:3000 --token $TOKEN 2>&1 | tee $LOG_FILE"
+tmux new-session -d -s "$SESSION" "cloudflared tunnel run --url http://localhost:8080 --token $TOKEN 2>&1 | tee $LOG_FILE"
 
 echo "Đang kiểm tra trạng thái khởi động..."
 sleep 3
