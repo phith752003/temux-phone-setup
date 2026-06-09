@@ -21,7 +21,7 @@ wget https://github.com/Eutalix/android-pydantic-core/releases/download/v2.46.3/
 mv pydantic_core-2.46.3-cp313-cp313-linux_aarch64.whl pydantic_core-2.46.3-cp313-cp313-android_arm64_v8a.whl
 pip install pydantic_core-2.46.3-cp313-cp313-android_arm64_v8a.whl
 rm -f pydantic_core-2.46.3-cp313-cp313-android_arm64_v8a.whl
-pip install fastapi uvicorn "pydantic-core==2.46.3"
+pip install fastapi uvicorn "pydantic-core==2.46.3" slowapi jinja2
 
 # Phase 5: Tạo cấu trúc thư mục
 echo ""
