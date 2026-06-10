@@ -496,3 +496,4 @@
 [2026-06-09 22:59:08 +0700] [COMMIT #492] perf(tunnel): reduce cron polling frequency to conserve battery consumption [status: ok]
 [2026-06-10 09:22:05 +0700] [COMMIT #493] refactor(scripts): update scripts implementation parameters [status: ok]
 [2026-06-10 12:36:56 +0700] [COMMIT #494] refactor(homelab): separate homelab dashboard frontend from monitoring API [status: ok]
+[2026-06-10 16:29:34 +0700] [COMMIT #495] docs(dashboard): add comprehensive maintainer guide for provisioning Android nodes [status: ok]
