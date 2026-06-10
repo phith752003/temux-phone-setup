@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Auto Clicker</string>
+    <string name="accessibility_service_description">Auto Clicker uses this service to perform tap and swipe gestures for macro automation. It does not read or collect any screen content.</string>
+
+    <!-- Navigation -->
+    <string name="nav_home">Home</string>
+    <string name="nav_profiles">Profiles</string>
+    <string name="nav_editor">Editor</string>
+    <string name="nav_status">Status</string>
+
+    <!-- Home Screen -->
+    <string name="accessibility_status">Accessibility Service</string>
+    <string name="overlay_status">Overlay Permission</string>
+    <string name="battery_opt_status">Battery Optimization</string>
+    <string name="btn_open_accessibility">Open Accessibility Settings</string>
+    <string name="btn_open_overlay">Grant Overlay Permission</string>
+    <string name="btn_ignore_battery">Ignore Battery Optimization</string>
+    <string name="btn_toggle_overlay">Toggle Overlay</string>
+    <string name="status_enabled">Enabled</string>
+    <string name="status_disabled">Disabled</string>
+    <string name="status_granted">Granted</string>
+    <string name="status_not_granted">Not Granted</string>
+    <string name="status_ignored">Ignored</string>
+    <string name="status_optimized">Optimized (may limit background)</string>
+    <string name="screen_capture_status">Screen Capture Permission</string>
+    <string name="btn_grant_screen_capture">Request Screen Capture</string>
+    <string name="status_granted_capture">Authorized (Ready for Image Match)</string>
+
+    <!-- Profile -->
+    <string name="no_profiles">No profiles yet. Create one to get started.</string>
+    <string name="btn_create_profile">Create Profile</string>
+    <string name="dialog_new_profile">New Profile</string>
+    <string name="dialog_edit_profile">Edit Profile</string>
+    <string name="hint_profile_name">Profile name</string>
+    <string name="hint_loop_count">Loop count (default: 20)</string>
+    <string name="hint_delay_between">Delay between actions (ms)</string>
+    <string name="hint_max_run_minutes">Max run time (minutes)</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_export">Export JSON</string>
+    <string name="btn_import">Import JSON</string>
+    <string name="confirm_delete">Are you sure you want to delete this profile?</string>
+
+    <!-- Macro Editor -->
+    <string name="no_actions">No actions yet. Use the buttons below to add actions.</string>
+    <string name="btn_add_tap">+ Tap</string>
+    <string name="btn_add_swipe">+ Swipe</string>
+    <string name="btn_add_wait">+ Wait</string>
+    <string name="hint_x">X coordinate</string>
+    <string name="hint_y">Y coordinate</string>
+    <string name="hint_x2">End X</string>
+    <string name="hint_y2">End Y</string>
+    <string name="hint_duration">Duration (ms)</string>
+    <string name="hint_delay_after">Delay after (ms)</string>
+    <string name="dialog_add_tap">Add Tap Action</string>
+    <string name="dialog_add_swipe">Add Swipe Action</string>
+    <string name="dialog_add_wait">Add Wait Action</string>
+
+    <!-- Status -->
+    <string name="macro_state_label">Macro State</string>
+    <string name="battery_label">Battery</string>
+    <string name="thermal_label">Thermal</string>
+    <string name="foreground_label">Foreground Service</string>
+    <string name="action_count_label">Actions Executed</string>
+    <string name="runtime_label">Runtime</string>
+    <string name="current_loop_label">Current Loop</string>
+    <string name="current_action_label">Current Action</string>
+
+    <!-- Overlay -->
+    <string name="overlay_title">Auto Clicker</string>
+
+    <!-- Notification -->
+    <string name="notification_channel_name">Macro Runner</string>
+    <string name="notification_channel_description">Shows status while macro is running</string>
+    <string name="notification_stop">Stop</string>
+
+    <!-- Errors / Warnings -->
+    <string name="warning_infinite_loop">Warning: Infinite loop enabled. Macro will auto-stop after max run time.</string>
+    <string name="error_no_accessibility">Please enable Accessibility Service first.</string>
+    <string name="error_no_overlay">Please grant Overlay permission first.</string>
+    <string name="paused_screen_off">Paused because screen was off. Press Resume to continue.</string>
+    <string name="paused_low_battery">Paused due to low battery (&lt; 20%%). Connect charger to continue.</string>
+    <string name="paused_thermal">Paused due to high device temperature. Wait for device to cool down.</string>
+</resources>

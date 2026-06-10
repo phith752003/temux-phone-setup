@@ -1,0 +1,20 @@
+{
+  "package_name": "com.autoclicker.app.debug",
+  "main_activity": ".MainActivity",
+  "adb_path": "C:\\platform-tools\\adb.exe",
+  "adb_path_fallback": "platform-tools-dist\\platform-tools\\adb.exe",
+  "project_dir": "auto-clicker",
+  "sdk_dir": "C:\\Android\\sdk",
+  "min_sdk": 26,
+  "target_sdk": 34,
+  "log_tags": [
+    "AutoClickerApp",
+    "MacroRunner",
+    "GestureService",
+    "OverlayService",
+    "BatteryMonitor",
+    "ThermalMonitor",
+    "ScreenMonitor",
+    "ForegroundSvc"
+  ]
+}

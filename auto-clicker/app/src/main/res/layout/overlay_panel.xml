@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/overlay_background"
+    android:padding="4dp"
+    android:alpha="0.95">
+
+    <!-- Drag handle / title bar -->
+    <LinearLayout
+        android:id="@+id/overlay_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="6dp"
+        android:gravity="center_vertical"
+        android:background="@color/overlay_bg">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="⚡ AC"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/btn_hide"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="@android:color/transparent"
+            android:contentDescription="Hide"
+            android:scaleType="centerInside" />
+    </LinearLayout>
+
+    <!-- Expandable body -->
+    <LinearLayout
+        android:id="@+id/overlay_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="4dp">
+
+        <!-- Status text -->
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="IDLE"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:padding="2dp" />
+
+        <!-- Control row 1: Start / Stop / Pause -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="4dp">
+
+            <Button
+                android:id="@+id/btn_start"
+                android:layout_width="56dp"
+                android:layout_height="32dp"
+                android:text="▶"
+                android:textSize="12sp"
+                android:background="@color/success"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="2dp" />
+
+            <Button
+                android:id="@+id/btn_pause"
+                android:layout_width="56dp"
+                android:layout_height="32dp"
+                android:text="⏸"
+                android:textSize="12sp"
+                android:background="@color/warning"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="2dp" />
+
+            <Button
+                android:id="@+id/btn_stop"
+                android:layout_width="56dp"
+                android:layout_height="32dp"
+                android:text="⏹"
+                android:textSize="12sp"
+                android:background="@color/error"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Control row 2: Add actions -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="2dp">
+
+            <Button
+                android:id="@+id/btn_add_tap"
+                android:layout_width="56dp"
+                android:layout_height="28dp"
+                android:text="+Tap"
+                android:textSize="9sp"
+                android:textAllCaps="false"
+                android:background="@color/overlay_btn"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="2dp" />
+
+            <Button
+                android:id="@+id/btn_add_swipe"
+                android:layout_width="56dp"
+                android:layout_height="28dp"
+                android:text="+Swipe"
+                android:textSize="9sp"
+                android:textAllCaps="false"
+                android:background="@color/overlay_btn"
+                android:textColor="#FFFFFF"
+                android:layout_marginEnd="2dp" />
+
+            <Button
+                android:id="@+id/btn_add_wait"
+                android:layout_width="56dp"
+                android:layout_height="28dp"
+                android:text="+Wait"
+                android:textSize="9sp"
+                android:textAllCaps="false"
+                android:background="@color/overlay_btn"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- Save button -->
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="28dp"
+            android:text="Save"
+            android:textSize="10sp"
+            android:textAllCaps="false"
+            android:background="@color/primary"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="2dp" />
+
+        <!-- OCR Log text -->
+        <TextView
+            android:id="@+id/tv_ocr_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="OCR Log: Chưa quét"
+            android:textColor="#FFFFD54F"
+            android:textSize="8sp"
+            android:gravity="center"
+            android:padding="2dp"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Emergency stop - always visible when running -->
+    <Button
+        android:id="@+id/btn_emergency_stop"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:text="⚠ EMERGENCY STOP"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:background="@color/overlay_emergency"
+        android:textColor="#FFFFFF"
+        android:visibility="gone" />
+
+</LinearLayout>

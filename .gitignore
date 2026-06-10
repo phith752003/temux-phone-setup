@@ -67,6 +67,15 @@ bots/config.json
 platform-tools-dist/
 usb-driver-dist/
 
+# --- Android Project ---
+auto-clicker/.gradle/
+auto-clicker/app/build/
+auto-clicker/build/
+auto-clicker/local.properties
+auto-clicker/gradle/wrapper/gradle-wrapper.jar
+*.apk
+*.aab
+
 # --- Agent Skills ---
 .agents/
 skills-lock.json
