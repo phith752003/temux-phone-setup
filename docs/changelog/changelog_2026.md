@@ -2538,3 +2538,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `security`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-06-16 10:11:38 +0700] fix(backup): verify backup implementation parameters
+- Type: `fix`
+- Scope: `backup`
+- Cycle: 2026 Telemetry Integration
+
