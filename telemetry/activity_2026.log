@@ -526,3 +526,4 @@
 [2026-06-22 12:10:01 +0700] [COMMIT #522] feat(tunnel): add thermal throttling and battery health telemetry dashboard [status: ok]
 [2026-06-22 13:51:35 +0700] [COMMIT #523] feat(scripts): update scripts implementation parameters [status: ok]
 [2026-06-22 21:52:12 +0700] [COMMIT #524] feat(homelab): add reverse proxy routing for lightweight local microservices [status: ok]
+[2026-06-23 09:33:54 +0700] [COMMIT #525] feat(dashboard): integrate Telegram bot notifications for server uptime alerts [status: ok]
