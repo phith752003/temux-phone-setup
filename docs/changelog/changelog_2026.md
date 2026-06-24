@@ -2658,3 +2658,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `termux`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-06-24 15:05:45 +0700] perf(tunnel): harden tunnel implementation parameters
+- Type: `perf`
+- Scope: `tunnel`
+- Cycle: 2026 Telemetry Integration
+
