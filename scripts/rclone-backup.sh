@@ -8,8 +8,8 @@ CAMERA_DIR="/sdcard/DCIM/Camera" # Thư mục chứa ảnh/video của camera tr
 LOG_FILE="$HOMELAB_DIR/logs/rclone-backup.log"
 
 # Cấu hình Rclone remotes (Bạn cần tạo cấu hình rclone trước với tên tương ứng)
-RCLONE_BACKUP_REMOTE="gdrive_backup:homelab-backups"
-RCLONE_CAMERA_REMOTE="gdrive_camera:camera-backups"
+RCLONE_BACKUP_REMOTE="gdrive:homelab-backups"
+RCLONE_CAMERA_REMOTE="gdrive:camera-backups"
 
 mkdir -p "$HOMELAB_DIR/logs"
 

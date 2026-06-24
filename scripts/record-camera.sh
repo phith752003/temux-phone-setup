@@ -10,7 +10,7 @@ NVR_PASSWORD="your_password"    # Mật khẩu NVR thiết lập trong App Yoose
 STREAM_PATH="onvif1"            # onvif1 (HD) hoặc onvif2 (SD - Tiết kiệm dung lượng)
 
 # --- CẤU HÌNH CLOUD & LOCAL ---
-RCLONE_REMOTE="gdrive_camera"   # Tên remote Rclone đã cấu hình
+RCLONE_REMOTE="gdrive"          # Tên remote Rclone đã cấu hình
 DB_PATH="$HOME/homelab/data/camera.db"
 TEMP_DIR="$HOME/homelab/data/camera/temp"
 LOG_FILE="$HOME/homelab/logs/camera-record.log"
@@ -50,7 +50,7 @@ record_segment() {
     FILENAME="${FILE_NAME_STR}.mp4"
     
     # Thư mục lưu trữ trên Google Drive
-    REMOTE_DIR="Nam_${YEAR}/Thang_${MONTH}/Ngay_${DAY}"
+    REMOTE_DIR="camera-backups/Nam_${YEAR}/Thang_${MONTH}/Ngay_${DAY}"
     REMOTE_PATH="${RCLONE_REMOTE}:${REMOTE_DIR}/${FILENAME}"
 
     # File tạm trên bộ nhớ cục bộ

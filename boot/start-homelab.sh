@@ -5,8 +5,9 @@
 # Giữ CPU hoạt động (không sleep)
 termux-wake-lock
 
-# Khởi động SSH server
+# Khởi động SSH server và Nginx
 sshd
+nginx
 
 # Đợi mạng Wi-Fi ổn định (30 giây để Android kết nối Wi-Fi + Tailscale VPN)
 sleep 30
@@ -19,6 +20,10 @@ fi
 
 # Khởi động API server
 bash ~/homelab/scripts/start-api.sh
+
+# Khởi động Cron daemon để chạy các tác vụ định kỳ
+crond
+
 
 # Khởi động Cloudflare Named Tunnel nếu có token
 TOKEN_FILE="$HOME/homelab/tunnels/vsmart-homelab.token"
