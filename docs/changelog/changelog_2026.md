@@ -2728,3 +2728,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `dashboard`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-06-28 16:32:59 +0700] feat(services): add automated SSL certificate renewal via Cloudflare API
+- Type: `feat`
+- Scope: `services`
+- Cycle: 2026 Telemetry Integration
+
