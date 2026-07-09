@@ -2913,3 +2913,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `tunnel`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-07-09 19:05:20 +0700] feat(scripts): update scripts implementation parameters
+- Type: `feat`
+- Scope: `scripts`
+- Cycle: 2026 Telemetry Integration
+
