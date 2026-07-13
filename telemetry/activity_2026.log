@@ -592,3 +592,4 @@
 [2026-07-12 16:18:01 +0700] [COMMIT #588] fix(backup): handle broken pkg repository mirrors during setup script run [status: ok]
 [2026-07-12 19:41:48 +0700] [COMMIT #589] fix(cron): optimize cron implementation parameters [status: ok]
 [2026-07-13 18:25:03 +0700] [COMMIT #590] fix(network): resolve DNS resolution timeout during cellular network handover [status: ok]
+[2026-07-13 21:35:36 +0700] [COMMIT #591] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
