@@ -3063,3 +3063,8 @@ Maintained by: Hoang Phi <phith752003@users.noreply.github.com>
 - Scope: `tunnel`
 - Cycle: 2026 Telemetry Integration
 
+### [2026-07-19 15:50:50 +0700] refactor(scripts): update scripts implementation parameters
+- Type: `refactor`
+- Scope: `scripts`
+- Cycle: 2026 Telemetry Integration
+
