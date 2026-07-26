@@ -637,3 +637,4 @@
 [2026-07-25 21:08:26 +0700] [COMMIT #633] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
 [2026-07-26 12:52:51 +0700] [COMMIT #634] refactor(homelab): refine homelab implementation parameters [status: ok]
 [2026-07-26 18:02:06 +0700] [COMMIT #635] docs(dashboard): add comprehensive maintainer guide for provisioning Android nodes [status: ok]
+[2026-07-26 21:16:12 +0700] [COMMIT #636] docs(services): document environment variables and Cloudflare token management [status: ok]
