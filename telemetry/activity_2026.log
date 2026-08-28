@@ -735,3 +735,4 @@
 [2026-08-28 12:35:26 +0700] [COMMIT #731] perf(termux): tune TCP keepalive and MTU parameters for low-latency tunnels [status: ok]
 [2026-08-28 17:12:11 +0700] [COMMIT #732] perf(tunnel): reduce cron polling frequency to conserve battery consumption [status: ok]
 [2026-08-28 22:23:29 +0700] [COMMIT #733] refactor(scripts): update scripts implementation parameters [status: ok]
+[2026-08-28 22:25:25 +0700] [COMMIT #734] refactor(homelab): separate homelab dashboard frontend from monitoring API [status: ok]
