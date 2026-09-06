@@ -756,3 +756,4 @@
 [2026-09-04 12:17:46 +0700] [COMMIT #752] perf(tunnel): reduce cron polling frequency to conserve battery consumption [status: ok]
 [2026-09-04 21:59:41 +0700] [COMMIT #753] refactor(scripts): modularize setup.sh into dedicated installer helper scripts [status: ok]
 [2026-09-05 10:11:00 +0700] [COMMIT #754] refactor(homelab): refine homelab implementation parameters [status: ok]
+[2026-09-06 09:33:46 +0700] [COMMIT #755] docs(dashboard): add comprehensive maintainer guide for provisioning Android nodes [status: ok]
